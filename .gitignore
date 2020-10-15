@@ -1,0 +1,11 @@
+App.Common/bin
+App.Common/obj
+
+SeekQ.NotificationsAndModesSettings.Api/bin
+SeekQ.NotificationsAndModesSettings.Api/obj
+
+SeekQ.NotificationsAndModesSettings.Api.Test/bin
+SeekQ.NotificationsAndModesSettings.Api.Test/obj
+
+
+.vs

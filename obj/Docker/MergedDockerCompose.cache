@@ -1,0 +1,30 @@
+services:
+  mssqlsrv:
+    container_name: SeekQDb
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Password123
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    ports:
+    - published: 1433
+      target: 1433
+  seekq.notificationsandmodessettings.api:
+    build:
+      context: D:\OIGALocal\SeekQ1\SeekQ.NotificationsAndModesSettings.Api
+      dockerfile: SeekQ.NotificationsAndModesSettings.Api/Dockerfile
+    depends_on:
+      mssqlsrv:
+        condition: service_started
+    environment:
+      ASPNETCORE_ConnectionStrings__MSSQL: Server=mssqlsrv,1433;Database=SeekQ.NotificationsAndModesSettings;User
+        Id=sa;Password=Password123
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: seekqnotificationsandmodessettingsapi
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\joseW\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\joseW\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
