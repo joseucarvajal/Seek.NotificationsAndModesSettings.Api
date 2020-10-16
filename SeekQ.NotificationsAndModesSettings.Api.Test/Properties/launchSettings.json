@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SeekQ.NotificationsAndModesSettings.Api.Test": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

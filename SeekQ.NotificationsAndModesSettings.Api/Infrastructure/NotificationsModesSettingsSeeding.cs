@@ -11,6 +11,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
     public class NotificationsModesSettingsSeeding
     {
         public static readonly Guid ID_USER_JOSE = new Guid("545DE66E-19AC-47D2-57F6-08D8715337D7");
+        public static readonly Guid ID_USER_DANIEL = new Guid("545DE66E-19AC-47D2-57F6-08D8715337D9");
 
         public async Task SeedAsync(NotificationsModesSettingsDbContext context, IServiceProvider services)
         {
@@ -38,7 +39,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
 
             User userDaniel = new User
             {
-                Id = new Guid()
+                Id = ID_USER_DANIEL
             };
             context.Users.Add(userDaniel);
 

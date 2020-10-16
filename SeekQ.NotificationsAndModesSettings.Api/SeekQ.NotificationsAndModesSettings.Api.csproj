@@ -19,9 +19,5 @@
     <ProjectReference Include="..\App.Common\App.Common.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Commands\" />
-  </ItemGroup>
-
 
 </Project>
