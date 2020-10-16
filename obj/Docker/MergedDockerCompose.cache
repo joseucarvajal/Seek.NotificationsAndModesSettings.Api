@@ -10,7 +10,7 @@ services:
       target: 1433
   seekq.notificationsandmodessettings.api:
     build:
-      context: D:\OIGALocal\SeekQ1\SeekQ.NotificationsAndModesSettings.Api
+      context: D:\OIGALocal\SeekQ\SeekQ.NotificationsAndModesSettings.Api
       dockerfile: SeekQ.NotificationsAndModesSettings.Api/Dockerfile
     depends_on:
       mssqlsrv:

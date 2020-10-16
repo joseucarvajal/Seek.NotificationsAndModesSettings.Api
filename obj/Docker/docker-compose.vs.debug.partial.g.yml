@@ -14,8 +14,8 @@ services:
       - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
       #- NUGET_FALLBACK_PACKAGES=$container_paths_to_fallback_packages_seekq.notificationsandmodessettings.api$
     volumes:
-      - D:\OIGALocal\SeekQ1\SeekQ.NotificationsAndModesSettings.Api\SeekQ.NotificationsAndModesSettings.Api:/app
-      - D:\OIGALocal\SeekQ1\SeekQ.NotificationsAndModesSettings.Api:/src
+      - D:\OIGALocal\SeekQ\SeekQ.NotificationsAndModesSettings.Api\SeekQ.NotificationsAndModesSettings.Api:/app
+      - D:\OIGALocal\SeekQ\SeekQ.NotificationsAndModesSettings.Api:/src
       - C:\Users\joseW\vsdbg\vs2017u5:/remote_debugger:rw
 #$nuget_volume_mapping_seekq.notificationsandmodessettings.api$
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
