@@ -42,6 +42,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api
                     .AddMediatR(typeof(GetNotificationsByUserQueryHandler).Assembly);
 
             services.AddSwaggerGen(config => {
+                config.CustomSchemaIds(x => x.FullName);
                 config.EnableAnnotations();
             });
         }
@@ -55,7 +56,10 @@ namespace SeekQ.NotificationsAndModesSettings.Api
             }
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+            app.UseSwagger(c =>
+            {
+                c.RouteTemplate = "swagger/{documentName}/swagger.json";
+            });
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notifications and modes API v1");

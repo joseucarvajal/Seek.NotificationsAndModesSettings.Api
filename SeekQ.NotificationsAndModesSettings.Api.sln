@@ -5,15 +5,15 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{E334202E-9416-4154-9335-F89C12092F44}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Common", "App.Common\App.Common.csproj", "{FDDD55EC-B558-4C78-B5F3-109AA0E9C778}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E7CCF439-AF9B-4639-BA28-803AA06A23D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekQ.NotificationsAndModesSettings.Api", "SeekQ.NotificationsAndModesSettings.Api\SeekQ.NotificationsAndModesSettings.Api.csproj", "{902A6E54-EAA2-4A6F-8308-6E5C0757A434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeekQ.NotificationsAndModesSettings.Api", "SeekQ.NotificationsAndModesSettings.Api\SeekQ.NotificationsAndModesSettings.Api.csproj", "{902A6E54-EAA2-4A6F-8308-6E5C0757A434}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{78E38A2D-6657-4DEB-9652-B304C68D648C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeekQ.NotificationsAndModesSettings.Api.Test", "SeekQ.NotificationsAndModesSettings.Api.Test\SeekQ.NotificationsAndModesSettings.Api.Test.csproj", "{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeekQ.NotificationsAndModesSettings.Api.Test", "SeekQ.NotificationsAndModesSettings.Api.Test\SeekQ.NotificationsAndModesSettings.Api.Test.csproj", "{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Common", "..\App.Common\App.Common\App.Common.csproj", "{D7B8A8D6-58EC-4748-8E43-8B12AD70B601}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FDDD55EC-B558-4C78-B5F3-109AA0E9C778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDDD55EC-B558-4C78-B5F3-109AA0E9C778}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDDD55EC-B558-4C78-B5F3-109AA0E9C778}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDDD55EC-B558-4C78-B5F3-109AA0E9C778}.Release|Any CPU.Build.0 = Release|Any CPU
 		{902A6E54-EAA2-4A6F-8308-6E5C0757A434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{902A6E54-EAA2-4A6F-8308-6E5C0757A434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{902A6E54-EAA2-4A6F-8308-6E5C0757A434}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,14 +33,18 @@ Global
 		{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7B8A8D6-58EC-4748-8E43-8B12AD70B601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7B8A8D6-58EC-4748-8E43-8B12AD70B601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7B8A8D6-58EC-4748-8E43-8B12AD70B601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7B8A8D6-58EC-4748-8E43-8B12AD70B601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{FDDD55EC-B558-4C78-B5F3-109AA0E9C778} = {E334202E-9416-4154-9335-F89C12092F44}
 		{902A6E54-EAA2-4A6F-8308-6E5C0757A434} = {E7CCF439-AF9B-4639-BA28-803AA06A23D5}
 		{8146C52D-EF47-4D24-BCB8-DF8CA79A52F9} = {E7CCF439-AF9B-4639-BA28-803AA06A23D5}
+		{D7B8A8D6-58EC-4748-8E43-8B12AD70B601} = {E334202E-9416-4154-9335-F89C12092F44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FA89D61-FE80-498A-AAE4-AC5E8DA23FD7}

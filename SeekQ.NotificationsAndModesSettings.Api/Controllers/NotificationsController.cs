@@ -22,7 +22,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
-        [HttpGet()]
+        /* [HttpGet]
         [Route("notifications/user/{idUser}")]
         [SwaggerOperation(Summary = "Get notifications settings by user")]
         public async Task<IEnumerable<GetNotificationsByUserViewModel>> GetNotificationsByUser(
@@ -32,7 +32,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
             return await _mediator.Send(new GetNotificationsByUserQueryHandler.Query(idUser));
         }
 
-        [HttpGet()]
+        [HttpGet]
         [Route("modes/user/{idUser}")]
         [SwaggerOperation(Summary = "Get modes settings by user")]
         public async Task<IEnumerable<GetModesByUserViewModel>> GetModesByUser(
@@ -40,10 +40,10 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
         )
         {
             return await _mediator.Send(new GetModesByUserQueryHandler.Query(idUser));
-        }
+        } */
 
         [HttpPost]
-        [Route("notifications/user/enable")]
+        [Route("user/enable")]
         [SwaggerOperation(Summary = "Enable user notification setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Notification user enabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
@@ -55,7 +55,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
         }
 
         [HttpPost]
-        [Route("notifications/user/disable")]
+        [Route("user/disable")]
         [SwaggerOperation(Summary = "Disable account notification/mode setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Account notification/mode setting Disabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
@@ -66,8 +66,8 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
             return await _mediator.Send(userNotificationType);
         }
 
-        [HttpPost]
-        [Route("notifications/user/enable")]
+        /* [HttpPost]
+        [Route("user/enable")]
         [SwaggerOperation(Summary = "Enable user notification setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Notification user enabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
@@ -79,7 +79,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
         }
 
         [HttpPost]
-        [Route("notifications/user/disable")]
+        [Route("user/disable")]
         [SwaggerOperation(Summary = "Disable account notification/mode setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Account notification/mode setting Disabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
@@ -88,6 +88,6 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
         )
         {
             return await _mediator.Send(userModeType);
-        }
+        } */
     }
 }
