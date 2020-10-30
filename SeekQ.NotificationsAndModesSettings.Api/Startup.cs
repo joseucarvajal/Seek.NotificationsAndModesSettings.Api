@@ -1,19 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using App.Common.DependencyInjection;
 using App.Common.Middlewares;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using SeekQ.NotificationsAndModesSettings.Api.Application.Queries;
 using SeekQ.NotificationsAndModesSettings.Api.Infrastructure;
 
@@ -36,10 +29,20 @@ namespace SeekQ.NotificationsAndModesSettings.Api
                     {
                         cfg.RegisterValidatorsFromAssemblyContaining<GetNotificationsByUserQueryHandler>();
                         cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                    });            
+                    });
+
+            services.AddControllers()
+                    .AddFluentValidation(cfg =>
+                    {
+                        cfg.RegisterValidatorsFromAssemblyContaining<GetModesByUserQueryHandler>();
+                        cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
+                    });
 
             services.AddCustomMSSQLDbContext<NotificationsModesSettingsDbContext>(Configuration)
                     .AddMediatR(typeof(GetNotificationsByUserQueryHandler).Assembly);
+
+            services.AddCustomMSSQLDbContext<NotificationsModesSettingsDbContext>(Configuration)
+                    .AddMediatR(typeof(GetModesByUserQueryHandler).Assembly);
 
             services.AddSwaggerGen(config => {
                 config.CustomSchemaIds(x => x.FullName);

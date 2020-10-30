@@ -13,5 +13,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Domain.ModesAggregate
         public User User { get; set; }
 
         public bool Active { get; set; }
+
+        public UserModeType() { }
     }
 }

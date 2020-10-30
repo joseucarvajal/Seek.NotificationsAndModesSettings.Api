@@ -1,5 +1,4 @@
-﻿using SeekQ.NotificationsAndModesSettings.Api.Domain.NotificationsAggregate;
-using System;
+﻿using System;
 
 namespace SeekQ.NotificationsAndModesSettings.Api.Application.Queries
 {

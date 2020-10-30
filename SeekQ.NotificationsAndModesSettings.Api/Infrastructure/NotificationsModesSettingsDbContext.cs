@@ -3,10 +3,6 @@ using SeekQ.NotificationsAndModesSettings.Api.Domain.ModesAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.NotificationsAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.UserAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Infrastructure.EntityConfigurations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
 {
@@ -26,9 +22,11 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ModeTypeEntityConfiguration());
             modelBuilder.ApplyConfiguration(new NotificationTypeEntityConfiguration());
             modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
             modelBuilder.ApplyConfiguration(new UserNotificationTypeEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserModeTypeEntityConfiguration());
         }
     }
 }

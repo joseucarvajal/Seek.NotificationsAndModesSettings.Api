@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using SeekQ.NotificationsAndModesSettings.Api.Domain.ModesAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.NotificationsAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.UserAggregate;
 using System;
@@ -25,10 +26,17 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
                 return;
             }
 
-            //Add notification types
+            // Add modes types
+            context.ModeTypes.Add(ModeType.ReceptivityMode);
+            context.ModeTypes.Add(ModeType.IncognitoMode);
+
+            // Add notification types
             context.NotificationTypes.Add(NotificationType.IncomingDiscreetHellos);
             context.NotificationTypes.Add(NotificationType.IncomingGestures);
             context.NotificationTypes.Add(NotificationType.IncomingChat);
+            context.NotificationTypes.Add(NotificationType.TemperatureMeterChange);
+            context.NotificationTypes.Add(NotificationType.InAppVibrations);
+            context.NotificationTypes.Add(NotificationType.InAppSounds);
 
             //Add users
             User userJose = new User
@@ -43,23 +51,88 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Infrastructure
             };
             context.Users.Add(userDaniel);
 
-            //Add user-notification-types
+            // Add user-notification-types for userJose
             context.UserNotificationTypes.Add(new UserNotificationType { 
                 User = userJose,
-                NotificationType = NotificationType.IncomingChat,
+                NotificationType = NotificationType.IncomingDiscreetHellos,
                 Active = true
             });
             context.UserNotificationTypes.Add(new UserNotificationType
             {
                 User = userJose,
                 NotificationType = NotificationType.IncomingGestures,
+                Active = false
+            });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userJose,
+                NotificationType = NotificationType.IncomingChat,
                 Active = true
             });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userJose,
+                NotificationType = NotificationType.TemperatureMeterChange,
+                Active = false
+            });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userJose,
+                NotificationType = NotificationType.InAppVibrations,
+                Active = true
+            });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userJose,
+                NotificationType = NotificationType.InAppSounds,
+                Active = false
+            });
 
+            // Add user-notification-types for userDaniel
             context.UserNotificationTypes.Add(new UserNotificationType
             {
                 User = userDaniel,
                 NotificationType = NotificationType.IncomingChat,
+                Active = true
+            });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userDaniel,
+                NotificationType = NotificationType.InAppVibrations,
+                Active = false
+            });
+            context.UserNotificationTypes.Add(new UserNotificationType
+            {
+                User = userDaniel,
+                NotificationType = NotificationType.InAppSounds,
+                Active = true
+            });
+
+            // Add user-mode-types for userJose
+            context.UserModeTypes.Add(new UserModeType
+            {
+                User = userJose,
+                ModeType = ModeType.ReceptivityMode,
+                Active = true
+            });
+            context.UserModeTypes.Add(new UserModeType
+            {
+                User = userJose,
+                ModeType = ModeType.IncognitoMode,
+                Active = false
+            });
+
+            // Add user-mode-types for userDaniel
+            context.UserModeTypes.Add(new UserModeType
+            {
+                User = userDaniel,
+                ModeType = ModeType.ReceptivityMode,
+                Active = true
+            });
+            context.UserModeTypes.Add(new UserModeType
+            {
+                User = userDaniel,
+                ModeType = ModeType.IncognitoMode,
                 Active = false
             });
 

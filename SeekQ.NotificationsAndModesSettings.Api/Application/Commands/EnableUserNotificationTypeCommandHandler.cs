@@ -14,15 +14,9 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
 {
     public class EnableUserNotificationTypeCommandHandler
     {
-        public class Command : IRequest<UserNotificationType>
+        public class Command : IRequest<bool>
         {
-            public Command(Guid id, bool active)
-            {
-                Id = id;
-                Active = active;
-            }
             public Guid Id { get; set; }
-            public bool Active { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
@@ -31,13 +25,10 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
             {
                 RuleFor(x => x.Id)
                     .NotNull().NotEmpty().WithMessage("The user notification Id is required");
-
-                RuleFor(x => x.Active)
-                    .NotNull().NotEmpty().WithMessage("The active is required");
             }
         }
 
-        public class Handler : IRequestHandler<Command, UserNotificationType>
+        public class Handler : IRequestHandler<Command, bool>
         {
 
             private NotificationsModesSettingsDbContext _notificationsModesSettingsDbContext;
@@ -47,25 +38,20 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
                 _notificationsModesSettingsDbContext = notificationsModesSettingsDbContext;
             }
 
-            public async Task<UserNotificationType> Handle(
+            public async Task<bool> Handle(
                 Command request,
                 CancellationToken cancellationToken
             )
             {
                 Guid id = request.Id;
-                bool active = request.Active;
 
-                UserNotificationType existingUserNotificationType = await _notificationsModesSettingsDbContext
-                                                .UserNotificationTypes
-                                                // .AsNoTracking()
-                                                .SingleOrDefaultAsync(unt => unt.Id == id);
+                UserNotificationType existingUserNotificationType = _notificationsModesSettingsDbContext.UserNotificationTypes.Find(id);
 
                 if (existingUserNotificationType != null)
                 {
                     existingUserNotificationType.Active = true;
                     _notificationsModesSettingsDbContext.UserNotificationTypes.Update(existingUserNotificationType);
-                    int count = await _notificationsModesSettingsDbContext.SaveChangesAsync();
-                    return existingUserNotificationType;
+                    return await _notificationsModesSettingsDbContext.SaveChangesAsync() > 0;
                 }
                 else
                 {

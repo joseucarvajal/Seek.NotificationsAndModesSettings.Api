@@ -41,7 +41,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Queries
                     string sql =
                         @"
                         SELECT 
-	                        umt.Id as IdMode, mt.Name as NotificationName, umt.Active
+	                        umt.Id as IdMode, mt.Name as ModeName, umt.Active
                         FROM 
 	                        ModeTypes mt INNER JOIN UserModeTypes umt
 		                        ON mt.Id = umt.IdModeType
