@@ -33,24 +33,12 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
         }
 
         [HttpPost]
-        [Route("user/enable")]
-        [SwaggerOperation(Summary = "Enable user notification setting")]
-        [SwaggerResponse((int)HttpStatusCode.OK, "Notification user enabled succesfully")]
-        [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
-        public async Task<bool> EnableUserModeType(
-            [FromBody]EnableUserModeTypeCommandHandler.Command usermodetype
-        )
-        {
-            return await _mediator.Send(usermodetype);
-        }
-
-        [HttpPost]
-        [Route("user/disable")]
-        [SwaggerOperation(Summary = "Disable account notification/mode setting")]
+        [Route("user/toggle")]
+        [SwaggerOperation(Summary = "Toggle account notification/mode setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Account notification/mode setting Disabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
-        public async Task<bool> DisableUserModeType(
-            [FromBody]DisableUserModeTypeCommandHandler.Command usermodetype
+        public async Task<bool> ToggleUserModeType(
+            [FromBody]ToggleUserModeTypeCommandHandler.Command usermodetype
         )
         {
             return await _mediator.Send(usermodetype);

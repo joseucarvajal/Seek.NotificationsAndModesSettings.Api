@@ -1,23 +1,21 @@
 ﻿using App.Common.Exceptions;
 using FluentValidation;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.ModesAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Domain.NotificationsAggregate;
 using SeekQ.NotificationsAndModesSettings.Api.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
 {
-    public class EnableUserModeTypeCommandHandler
+    public class ToggleUserNotificationTypeCommandHandler
     {
         public class Command : IRequest<bool>
         {
             public Guid Id { get; set; }
+            public bool Active { get; set; }
         }
 
         public class CommandValidator : AbstractValidator<Command>
@@ -26,11 +24,15 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
             {
                 RuleFor(x => x.Id)
                     .NotNull().NotEmpty().WithMessage("The user notification Id is required");
+
+                RuleFor(x => x.Active)
+                    .NotNull().Must(x => x == false || x == true).WithMessage("The user notification active is required");
             }
         }
 
         public class Handler : IRequestHandler<Command, bool>
         {
+
             private NotificationsModesSettingsDbContext _notificationsModesSettingsDbContext;
 
             public Handler(NotificationsModesSettingsDbContext notificationsModesSettingsDbContext)
@@ -44,13 +46,14 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Commands
             )
             {
                 Guid id = request.Id;
+                bool active = request.Active;
 
-                UserModeType existingUserModeType = _notificationsModesSettingsDbContext.UserModeTypes.Find(id);
+                UserNotificationType existingUserModeType = _notificationsModesSettingsDbContext.UserNotificationTypes.Find(id);
 
                 if (existingUserModeType != null)
                 {
-                    existingUserModeType.Active = true;
-                    _notificationsModesSettingsDbContext.UserModeTypes.Update(existingUserModeType);
+                    existingUserModeType.Active = active;
+                    _notificationsModesSettingsDbContext.UserNotificationTypes.Update(existingUserModeType);
                     return await _notificationsModesSettingsDbContext.SaveChangesAsync() > 0;
                 }
                 else
