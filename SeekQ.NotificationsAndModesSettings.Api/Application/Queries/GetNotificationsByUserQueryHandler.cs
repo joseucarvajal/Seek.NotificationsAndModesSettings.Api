@@ -40,7 +40,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Application.Queries
                     string sql =
                         @"
                         SELECT 
-	                        unt.Id as IdNotification, nt.Name as NotificationName, unt.Active
+	                        unt.Id as IdNotification, nt.Id as NotificationTypeId, nt.Name as NotificationTypeName, unt.Active
                         FROM 
 	                        NotificationTypes nt INNER JOIN UserNotificationTypes unt
 		                        ON nt.Id = unt.IdNotificationType
