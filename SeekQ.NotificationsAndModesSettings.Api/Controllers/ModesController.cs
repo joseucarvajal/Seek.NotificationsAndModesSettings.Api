@@ -34,7 +34,7 @@ namespace SeekQ.NotificationsAndModesSettings.Api.Controllers
 
         [HttpPost]
         [Route("user/toggle")]
-        [SwaggerOperation(Summary = "Toggle account notification/mode setting")]
+        [SwaggerOperation(Summary = "Toggle account mode setting")]
         [SwaggerResponse((int)HttpStatusCode.OK, "Account notification/mode setting Disabled succesfully")]
         [SwaggerResponse((int)HttpStatusCode.BadRequest, "Bad Request")]
         public async Task<bool> ToggleUserModeType(

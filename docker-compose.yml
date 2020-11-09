@@ -4,21 +4,14 @@ services:
   seekq.notificationsandmodessettings.api:
     image: ${DOCKER_REGISTRY-}seekqnotificationsandmodessettingsapi
     ports:
-      - "32701:80"
+      - "32702:80"
     build:
       context: .
       dockerfile: SeekQ.NotificationsAndModesSettings.Api/Dockerfile
     environment:
-      ASPNETCORE_ConnectionStrings__MSSQL: "Server=mssqlsrv,1433;Database=SeekQ.NotificationsAndModesSettings;User Id=sa;Password=Password123"
-    depends_on:
-      - mssqlsrv
+      ASPNETCORE_ConnectionStrings__MSSQL: "Server=seekq.mssql,1433;Database=SeekQ.NotificationsAndModesSettings;User Id=sa;Password=Password123"
 
-  #ports: host:container
-  mssqlsrv:
-    image: "mcr.microsoft.com/mssql/server:2017-latest"
-    container_name: SeekQDb
-    ports:
-      - "1433:1433"
-    environment:
-      SA_PASSWORD: "Password123"
-      ACCEPT_EULA: "Y"
+networks:
+  default:
+    external:
+      name: SEEKQ_NETWORK

@@ -28,13 +28,8 @@ namespace SeekQ.NotificationsAndModesSettings.Api
                     .AddFluentValidation(cfg =>
                     {
                         cfg.RegisterValidatorsFromAssemblyContaining<GetNotificationsByUserQueryHandler>();
-                        cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
-                    });
-
-            services.AddControllers()
-                    .AddFluentValidation(cfg =>
-                    {
                         cfg.RegisterValidatorsFromAssemblyContaining<GetModesByUserQueryHandler>();
+
                         cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                     });
 
