@@ -28,16 +28,11 @@ namespace SeekQ.NotificationsAndModesSettings.Api
                     .AddFluentValidation(cfg =>
                     {
                         cfg.RegisterValidatorsFromAssemblyContaining<GetNotificationsByUserQueryHandler>();
-                        cfg.RegisterValidatorsFromAssemblyContaining<GetModesByUserQueryHandler>();
-
                         cfg.RunDefaultMvcValidationAfterFluentValidationExecutes = false;
                     });
 
             services.AddCustomMSSQLDbContext<NotificationsModesSettingsDbContext>(Configuration)
                     .AddMediatR(typeof(GetNotificationsByUserQueryHandler).Assembly);
-
-            services.AddCustomMSSQLDbContext<NotificationsModesSettingsDbContext>(Configuration)
-                    .AddMediatR(typeof(GetModesByUserQueryHandler).Assembly);
 
             services.AddSwaggerGen(config => {
                 config.CustomSchemaIds(x => x.FullName);
